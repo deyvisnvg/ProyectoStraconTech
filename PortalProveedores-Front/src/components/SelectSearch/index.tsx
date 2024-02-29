@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Select, Space } from "antd";
 
 
-export default function SelectSearch({ proveedorService, products, setProductsTemp }: any) {
+export default function SelectSearch({ proveedorService, values, setValues, setCurrentPage }: any) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -27,8 +27,13 @@ export default function SelectSearch({ proveedorService, products, setProductsTe
 
   const onChange = (value: number) => {
     console.log(`selected ${value}`);
-    const productFilter = products.filter(({proveedor}: any) => proveedor == value);
-    setProductsTemp(productFilter);
+    const productFilter = values.products.filter(({proveedor}: any) => proveedor == value);
+    setCurrentPage(1);
+    setValues({
+      ...values,
+      productSelectSearch: productFilter,
+      productSearchTable: productFilter
+    })
 };
 
   const onSearch = (value: string) => {

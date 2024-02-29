@@ -1,11 +1,11 @@
-export default function Paginacion({ setCurrentPage, productsPerPage, filteredProducts }: any) {
+export default function Paginacion({ setCurrentPage, productsPerPage, values }: any) {
     const handlePagination = (pageNumber: number) => {
         setCurrentPage(pageNumber);
     };
     
     // Renderizar números de página
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(filteredProducts.length / productsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(values.productSearchTable.length / productsPerPage); i++) {
         pageNumbers.push(i);
     }
 
